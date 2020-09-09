@@ -28,16 +28,16 @@ class BookListView(ListView):
     paginate_by = 2
 
 class BookDetailView(DetailView):
-    model = Author
+    model = Book
     template_name = 'book_detail.html'
     # paginate_by = 1
 
 class AuthorListView(ListView):
-    model = Book
+    model = Author
     template_name = 'author_list.html'
     paginate_by = 2
 
 class AuthorDetailView(DetailView):
-    model = Book
+    model = Author
     template_name = 'author_detail.html'
     # paginate_by = 1
