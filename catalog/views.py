@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from catalog.models import Book,BookInstance,Author,Genre
+from django.views.generic import ListView,DetailView
+
 
 # Create your views here.
 def index(request):
@@ -18,3 +20,24 @@ def index(request):
     }
 
     return render(request,'index.html', context=context)
+
+
+class BookListView(ListView):
+    model = Book
+    template_name = 'book_list.html'
+    paginate_by = 2
+
+class BookDetailView(DetailView):
+    model = Author
+    template_name = 'book_detail.html'
+    # paginate_by = 1
+
+class AuthorListView(ListView):
+    model = Book
+    template_name = 'author_list.html'
+    paginate_by = 2
+
+class AuthorDetailView(DetailView):
+    model = Book
+    template_name = 'author_detail.html'
+    # paginate_by = 1
