@@ -47,7 +47,12 @@ class AuthorListView(LoginRequiredMixin,ListView):
 class AuthorDetailView(LoginRequiredMixin,DetailView):
     model = Author
     template_name = 'author_detail.html'
-    context_object_name = 'author'
+#     context_object_name = 'author'
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['book_list'] = Book.objects.filter(author=context['author'].pk)
+        return context
     # paginate_by = 1
 
 class LoanBookByUserListView(LoginRequiredMixin,ListView):
