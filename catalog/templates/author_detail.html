@@ -10,7 +10,10 @@
 
 <div style="font-size: 2vh; margin-left: 30px;">
     <h3>books</h3>
-    <p>{{author.book.title}}1</p>
+    {% for book in book_list %}
+    <p>{{book.title}}</p>
+    {% endfor %}
+
 
 </div>
 
